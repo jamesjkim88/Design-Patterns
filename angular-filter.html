@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>filter</title>
+    <script src="bower_components/angular/angular.js"></script>
+    <script>
+
+        var app = angular.module("app", []);
+
+        app.controller("mainCtrl", function($scope, $filter){
+            $scope.message = "hello";
+            $scope.filterMessage = $filter("uppercase")($scope.message);
+        });
+
+    </script>
+</head>
+<body ng-controller="mainCtrl">
+<h1>{{message}}</h1>
+<h1>{{filterMessage}}</h1>
+</body>
+</html>

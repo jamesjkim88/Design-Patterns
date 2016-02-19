@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Private Member</title>
+    <script>
+
+        function A6(vin){
+            this.vin = function(){
+                Object.defineProperty(this, "vin", {
+                get: function(){
+                return vin;
+                }
+            })
+        };
+
+        var car = new A6("31l4j2l;3ktjq32");
+        console.log(car.vin);
+        car.vin = "234234";
+        console.log(car.vin);
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

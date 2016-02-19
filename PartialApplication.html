@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Partial Application</title>
+    <script>
+
+        function times(a,b){
+            return a*b;
+        }
+
+        function partial(fn){
+            return function(){
+                if(arguments.length === fn.length){
+                    return fn.bind(null, arguments);
+                }else{
+                    return fn.bind(null, arguments[0], arguments[1]);
+                }
+            }
+        }
+
+        var discount25 = partial(times, 0.25);
+        var half = times.bind(null, 0.50);
+
+        console.log(discount25(5));
+        console.log(half(2));
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

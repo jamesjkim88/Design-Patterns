@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>memoize</title>
+    <script>
+
+        function multiply(a,b){
+            return a*b;
+        }
+
+        function memoize(fn){
+            var cache = {};
+            return function(){
+                var arr = Array.prototype.slice.call(arguments);
+                var key = arr.join(',');
+                console.log(key);
+
+                if(typeof cache[key] === "undefined"){
+                    cache[key] = fn.apply(null,arguments);
+                }
+                return cache[key];
+            };
+        }
+
+        var multiply_memoize = memoize(multiply);
+        console.log(multiply_memoize(5,2));
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

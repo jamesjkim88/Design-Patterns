@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>module</title>
+    <script>
+
+//        var Github = {
+//            repos: function(query, callback){
+//
+//            }
+//        }
+
+/*
+Used to create own library and or complex heirachle structure
+ */
+
+        var Github = {
+            init: function(path, callback){
+                var module = path.split(".");
+                console.log(module);
+                if(module[0] === "Github") module.shift();
+                console.log(module);
+                var parent = Github;
+                while(module.length > 0){
+                    var module = module.shift();;
+                    if(typeof parent[module] === undefined) {
+                        parent[module] = {};
+                    }
+                    parent = parent[module];
+                }
+                console.dir(Github);
+                return parent;
+            }
+        };
+
+        Github.init("Github.search.repositories", function(query, callback){
+            callback("info from github");
+        })
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

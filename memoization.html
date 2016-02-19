@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+
+
+//        function factorial (n) {
+//            if (n === 0)
+//                return 1;
+//            return factorial(n-1) * n;
+//        };
+//
+//        console.log(factorial(5));
+
+        function searchRepo(query){
+
+            searchRepo.cache = searchRepo.cache || {};
+            if(typeof searchRepo.cache[query] === "undefined"){
+                var xhr = new XMLHttpRequest();
+                xhr.open("get", "https://api.github.com/search/repositories?q=" + query);
+                xhr.addEventListener("readystatechange", function(){
+                    if(xhr.status === 200 && xhr.readyState === 4){
+                        var response = JSON.parse(xhr.responseText);
+                        console.log(response);
+                    }
+                });
+                xhr.send();
+            }
+            }
+
+
+
+
+        searchRepo("nodejs");
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
